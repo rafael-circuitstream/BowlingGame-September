@@ -35,23 +35,19 @@ public class PlayerController : MonoBehaviour
             aimingArrow.SetActive(false);
 
             wasThrown = true;
-            myRigidbody.AddForce(aimingArrow.transform.forward * throwStrength, ForceMode.Force); //This means 0 on X, 0 on Y, 1 on Z
+            myRigidbody.AddForce(aimingArrow.transform.forward * throwStrength, ForceMode.Impulse); //This means 0 on X, 0 on Y, 1 on Z
+            Invoke("StopThrow", 10f);
         }
-    }
-
-    void OnCollisionEnter(Collision collision)
-    {
-
-        if (collision.gameObject.CompareTag("Pin"))
-        {
-
-        }
-
     }
 
     void OnTriggerEnter(Collider other)
     {
-        FindObjectOfType<GameManager>().StartThrow();
-        Destroy(gameObject, 4);
+        StopThrow();
+    }
+
+    void StopThrow()
+    {
+        FindObjectOfType<GameManager>().BallOnPit();
+        Destroy(gameObject, 3f);
     }
 }

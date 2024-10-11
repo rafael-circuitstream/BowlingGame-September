@@ -4,11 +4,25 @@ using UnityEngine;
 using System;
 public class Pin : MonoBehaviour
 {
+
+    private Vector3 originalPosition;
+    private Quaternion originalRotation;
     [SerializeField] private Rigidbody myRigidbody;
+    
     // Start is called before the first frame update
     void Start()
     {
+        originalPosition = transform.position;
+        originalRotation = transform.rotation;
+    }
 
+    public void ResetPinToOrigin()
+    {
+        myRigidbody.velocity = Vector3.zero;
+        myRigidbody.angularVelocity = Vector3.zero;
+        
+        transform.position = originalPosition;
+        transform.rotation = originalRotation;
     }
 
     // Update is called once per frame
@@ -20,14 +34,21 @@ public class Pin : MonoBehaviour
         }
     }
 
-    bool IsPinFallen()
+    public bool IsPinFallen()
     {
-        return false;
+
+        if (transform.rotation.x > 0.1f || transform.rotation.x < -0.1f 
+            || transform.rotation.z > 0.1f || transform.rotation.z < -0.1f)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
         
-    }
-
-    void ResetPinToOrigin()
-    {
 
     }
+
+
 }
