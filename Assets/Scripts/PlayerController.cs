@@ -8,8 +8,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float throwStrength;
     [SerializeField] private Rigidbody myRigidbody;
     [SerializeField] private GameObject aimingArrow;
-
-
     // Update is called once per frame
     private void Update()
     {
@@ -24,9 +22,7 @@ public class PlayerController : MonoBehaviour
         {
             transform.Translate(Input.GetAxis("Horizontal") * Time.deltaTime, 0, 0);
         }
-        
     }
-
     void ThrowingBall()
     {
         if (Input.GetKeyDown(KeyCode.Space) && !wasThrown)
