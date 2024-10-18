@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3781997455308295889}
   - component: {fileID: 5463487057504734378}
   - component: {fileID: 7456924474683078901}
+  - component: {fileID: 241672987028940248}
   m_Layer: 5
   m_Name: UIFrame
   m_TagString: Untagged
@@ -79,6 +80,22 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &241672987028940248
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1491198927959595602}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f26b327fa28b4b941953d6ab577d59f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  frameNumberText: {fileID: 5591051467173127125}
+  firstThrowText: {fileID: 1524882272955197911}
+  secondThrowText: {fileID: 4863683768145463696}
+  totalScoreText: {fileID: 3175512741763518175}
 --- !u!1 &1565327623133171589
 GameObject:
   m_ObjectHideFlags: 0

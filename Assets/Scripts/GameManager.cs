@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
     [Header("Game Objects")]
     [SerializeField] private Pin[] pins;
     [SerializeField] private GameObject ballPrefab;
+    [SerializeField] private UIManager uiManager;
 
     [Header("Game Status")]
     [SerializeField] private int throwCounter;
@@ -43,6 +44,8 @@ public class GameManager : MonoBehaviour
 
         if (throwCounter == 2 || firstThrowScore == 10)
         {
+            //HERE IS STRIKE OR SPARE MOMENT
+
             StartNewFrame();
 
             if (currentFrame > maxAmountOfFrames) //IF ITS PAST THE LAST FRAME
@@ -60,6 +63,8 @@ public class GameManager : MonoBehaviour
         totalScore += firstThrowScore + secondThrowScore;
         firstThrowScore = 0;
         secondThrowScore = 0;
+
+        //DISPLAY TOTAL SCORE
 
         throwCounter = 0;
 
@@ -91,9 +96,11 @@ public class GameManager : MonoBehaviour
             }
         }
 
-        if(throwCounter == 1)
+        if(throwCounter == 1) //THIS IS THE MOMENT WHERE UI SHOULD BE UPDATED
         {
             firstThrowScore = score;
+            uiManager.UpdateFirstThrowOnFrame(currentFrame, firstThrowScore);
+            
         }
         else if(throwCounter == 2)
         {
