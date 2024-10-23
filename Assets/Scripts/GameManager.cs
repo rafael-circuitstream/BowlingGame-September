@@ -50,6 +50,7 @@ public class GameManager : MonoBehaviour
 
             if (currentFrame > maxAmountOfFrames) //IF ITS PAST THE LAST FRAME
             {
+                uiManager.DisplayGameOverScreen(totalScore);
                 return;
             }
         }
@@ -65,6 +66,7 @@ public class GameManager : MonoBehaviour
         secondThrowScore = 0;
 
         //DISPLAY TOTAL SCORE
+        uiManager.UpdateTotalScoreOnFrame(currentFrame, totalScore);
 
         throwCounter = 0;
 
@@ -100,13 +102,22 @@ public class GameManager : MonoBehaviour
         {
             firstThrowScore = score;
             uiManager.UpdateFirstThrowOnFrame(currentFrame, firstThrowScore);
+
+            if(firstThrowScore == 10)
+            {
+                uiManager.DisplayStrike();
+            }
             
         }
         else if(throwCounter == 2)
         {
             secondThrowScore = score;
-        }
+            uiManager.UpdateSecondThrowOnFrame(currentFrame, secondThrowScore);
 
-        Debug.Log(score);
+            if (secondThrowScore + firstThrowScore == 10)
+            {
+                uiManager.DisplaySpare();
+            }
+        }
     }
 }

@@ -1,19 +1,28 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using System;
 public class Pin : MonoBehaviour
 {
 
     private Vector3 originalPosition;
     private Quaternion originalRotation;
     [SerializeField] private Rigidbody myRigidbody;
-    
+    [SerializeField] private AudioSource pinHitSound;
+
     // Start is called before the first frame update
     void Start()
     {
         originalPosition = transform.position;
         originalRotation = transform.rotation;
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(collision.gameObject.CompareTag("Player"))
+        {
+            pinHitSound.pitch = Random.Range(0.9f, 1.2f);
+            pinHitSound.Play();
+        }
     }
 
     public void ResetPinToOrigin()
